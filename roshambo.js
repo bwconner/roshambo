@@ -3,25 +3,29 @@ var currentBoard = [[2,0,2],
 					[0,0,0],
 					[2,0,2]];
 
-function beginGame () {
-	playerClickHandler();
+function cleanGame() {
+	$("#player-throw-display").removeClass();
+	$("#computer-throw-display").removeClass();
 }
 
 function processGame(playerThrow) {
 	var computerThrow = determineComputerThrow();
-	
-	alert(playerThrow);
-	alert(computerThrow);
 
 	switch(playerThrow) {
 		case 0:
+		case "0":
 			//throw rock
+			$("#player-throw-display").addClass("throw-rock");
 			break;
 		case 1:
+		case "1":
 			//throw paper
+			$("#player-throw-display").addClass("throw-paper");
 			break;
 		case 2:
+		case "2":
 			//throw scissors
+			$("#player-throw-display").addClass("throw-scissors");
 			break;
 		default:
 			//the game broke
@@ -30,18 +34,41 @@ function processGame(playerThrow) {
 	switch(cpuThought) {
 		case 0:
 			//throw rock
+			$("#computer-throw-display").addClass("throw-rock");
 			break;
 		case 1:
 			//throw paper
+			$("#computer-throw-display").addClass("throw-paper");
 			break;
 		case 2:
 			//throw scissors
+			$("#computer-throw-display").addClass("throw-scissors");
 			break;
 		default:
 			//throw rock as a safety fallback
-	}	
+	}
 
+}
 
+function gameAnimation() {
+	setTimeout(function() {
+		$("#player-throw-display").removeClass();
+		$("#computer-throw-display").removeClass();
+		$("#player-throw-display").addClass("throw-rock");
+		$("#computer-throw-display").addClass("throw-rock");
+	}, 1000);
+	setTimeout(function() {
+		$("#player-throw-display").removeClass();
+		$("#computer-throw-display").removeClass();
+		$("#player-throw-display").addClass("throw-paper");
+		$("#computer-throw-display").addClass("throw-paper");
+	}, 1000);
+	setTimeout(function() {
+		$("#player-throw-display").removeClass();
+		$("#computer-throw-display").removeClass();
+		$("#player-throw-display").addClass("throw-scissors");
+		$("#computer-throw-display").addClass("throw-scissors");
+	}, 1000);
 }
 
 function determineComputerThrow() {
@@ -64,11 +91,14 @@ function determineComputerThrow() {
 }
 
 function playerClickHandler() {
+	cleanGame();
+
 	$(".player-option").on("click", function() {
+		//gameAnimation();
 		processGame($(this).attr("data-throw"));
 	});
 }
 
 $(document).ready(function() {
-	beginGame();
+	playerClickHandler();
 });

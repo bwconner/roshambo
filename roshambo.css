@@ -1,6 +1,6 @@
 
 
-.player-wrapper {
+.player-action-wrapper {
 	background: #000;
 	display: inline-block;
 	padding: 5px;
@@ -14,4 +14,42 @@
 	text-align: center;
 	text-transform: uppercase;
 	width: 80px;
+}
+
+#player-throw-display,
+#computer-throw-display,
+.player-throw-image,
+.computer-throw-image {
+	display: inline-block;
+	height: 200px;
+	width: 200px;
+}
+
+.computer-throw-image {
+    -moz-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+
+.player-throw-image,
+.computer-throw-image {
+	background-image: url("images/paper.png");
+	background-size: contain;
+}
+
+.throw-rock .player-throw-image,
+.throw-rock .computer-throw-image {
+	background-image: url("images/rock.png");
+}
+
+.throw-paper .player-throw-image,
+.throw-paper .computer-throw-image {
+	background-image: url("images/paper.png");
+}
+
+.throw-scissors .player-throw-image,
+.throw-scissors .computer-throw-image {
+	background-image: url("../roshambo/images/scissors.png");
 }
