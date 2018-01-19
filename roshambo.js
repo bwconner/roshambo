@@ -11,7 +11,7 @@ function processGame(playerThrow) {
 		case "rock":
 			$("#player-throw-display").addClass("throw-rock");
 			break;
-		case "rock":
+		case "paper":
 			$("#player-throw-display").addClass("throw-paper");
 			break;
 		case "scissors":
@@ -25,7 +25,7 @@ function processGame(playerThrow) {
 		case "rock":
 			$("#computer-throw-display").addClass("throw-rock");
 			break;
-		case "rock":
+		case "paper":
 			$("#computer-throw-display").addClass("throw-paper");
 			break;
 		case "scissors":
