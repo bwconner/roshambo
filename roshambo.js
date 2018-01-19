@@ -7,6 +7,9 @@ function cleanGame() {
 function processGame(playerThrow) {
 	var computerThrow = determineComputerThrow();
 
+	$("#player-throw-display").removeClass();
+	$("#computer-throw-display").removeClass();
+
 	switch(playerThrow) {
 		case "rock":
 			$("#player-throw-display").addClass("throw-rock");
@@ -39,27 +42,28 @@ function processGame(playerThrow) {
 	displayGameResults(playerWin);
 }
 
-function gameAnimation() {
+function gameAnimation(playerThrow) {
 	setTimeout(function() {
 		$("#player-throw-display").removeClass();
 		$("#computer-throw-display").removeClass();
 		$("#player-throw-display").addClass("throw-rock");
 		$("#computer-throw-display").addClass("throw-rock");
-	}, 1000);
-
-	setTimeout(function() {
-		$("#player-throw-display").removeClass();
-		$("#computer-throw-display").removeClass();
-		$("#player-throw-display").addClass("throw-paper");
-		$("#computer-throw-display").addClass("throw-paper");
-	}, 1000);
-
-	setTimeout(function() {
-		$("#player-throw-display").removeClass();
-		$("#computer-throw-display").removeClass();
-		$("#player-throw-display").addClass("throw-scissors");
-		$("#computer-throw-display").addClass("throw-scissors");
-	}, 1000);
+		setTimeout(function() {
+			$("#player-throw-display").removeClass();
+			$("#computer-throw-display").removeClass();
+			$("#player-throw-display").addClass("throw-scissors");
+			$("#computer-throw-display").addClass("throw-scissors");
+			setTimeout(function() {
+				$("#player-throw-display").removeClass();
+				$("#computer-throw-display").removeClass();
+				$("#player-throw-display").addClass("throw-paper");
+				$("#computer-throw-display").addClass("throw-paper");
+				setTimeout(function() {
+					processGame(playerThrow);
+				}, 500);
+			}, 500);
+		}, 500);
+	}, 500);
 }
 
 function determineComputerThrow() {
@@ -126,8 +130,7 @@ function displayGameResults(playerWin) {
 function playerClickHandler() {
 	$(".player-option").on("click", function() {
 		cleanGame();
-		//gameAnimation();
-		processGame($(this).attr("data-throw"));
+		gameAnimation($(this).attr("data-throw"));
 	});
 }
 
