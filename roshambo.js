@@ -1,8 +1,3 @@
-var playerTurn = true;
-var currentBoard = [[2,0,2],
-					[0,0,0],
-					[2,0,2]];
-
 function cleanGame() {
 	$("#player-throw-display").removeClass();
 	$("#computer-throw-display").removeClass();
