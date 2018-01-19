@@ -46,12 +46,14 @@ function gameAnimation() {
 		$("#player-throw-display").addClass("throw-rock");
 		$("#computer-throw-display").addClass("throw-rock");
 	}, 1000);
+
 	setTimeout(function() {
 		$("#player-throw-display").removeClass();
 		$("#computer-throw-display").removeClass();
 		$("#player-throw-display").addClass("throw-paper");
 		$("#computer-throw-display").addClass("throw-paper");
 	}, 1000);
+
 	setTimeout(function() {
 		$("#player-throw-display").removeClass();
 		$("#computer-throw-display").removeClass();
@@ -112,10 +114,10 @@ function determineWinner(playerThrow, computerThrow) {
 }
 
 function displayGameResults(playerWin) {
-	if (playerWin) {
-		$(".outcome-display").text("YOU WIN!");
-	} else if (playerWin === "tie") {
+	if (playerWin === "tie") {
 		$(".outcome-display").text("TIE!");
+	} else if (playerWin) {
+		$(".outcome-display").text("YOU WIN!");
 	} else {
 		$(".outcome-display").text("YOU LOSE!");
 	}
